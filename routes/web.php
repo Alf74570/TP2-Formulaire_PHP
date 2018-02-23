@@ -19,3 +19,4 @@ Route::get('/user/create', 'UserController@create');
 Route::post('/user', 'UserController@store');
 
 Route::get('/news/create', 'NewsController@create');
+Route::post('/news', 'NewsController@store');
