@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Users;
+use App\Http\Requests\UserRequest;
 
 class UserController extends Controller
 {
@@ -29,20 +30,23 @@ class UserController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  UserRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(UserRequest $request)
     {
         $data = [
             'user' => [
                 'firstname' => $request->input('firstname'),
                 'lastname' => $request->input('lastname'),
+                'email' => $request->input('email'),
                 'gender' => $request->input('gender'),
-                'newsletter' => $request->input('newsletter'),
+                'newsletter' => ($request->input('newsletter') === 'yes') ? true : false,
                 'mood' => $request->input('mood'),
             ],
         ];
+
+        Users::create($data['user']);
 
         return view('user.result', $data);
 

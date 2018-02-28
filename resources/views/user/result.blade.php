@@ -11,6 +11,9 @@
             <h3>Lastname</h3>
             <p>valeur : <b>{{ $user['lastname'] }}</b></p>
 
+            <h3>eMail</h3>
+            <p>valeur : <b>{{ $user['email'] }}</b></p>
+
             <h3>Gender</h3>
             <p>valeur : <b>{{ $user['gender'] }}</b></p>
 

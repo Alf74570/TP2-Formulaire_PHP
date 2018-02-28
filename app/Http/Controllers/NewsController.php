@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\News;
+use App\Http\Requests\NewsRequest;
 
 class NewsController extends Controller
 {
@@ -29,10 +30,10 @@ class NewsController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  NewsRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(NewsRequest $request)
     {
         $data = [
             'news' => [
@@ -40,6 +41,8 @@ class NewsController extends Controller
                 'content' => $request->input('content'),
             ],
         ];
+
+        News::create($data['news']);
 
         return view('news.result', $data);
     }

@@ -8,13 +8,20 @@
         <div class="panel-body">
             <form class="" action="/user" method="post">
                 {{ csrf_field() }}
-                <div class="form-group">
-                    <label for="firstname">firstname</label>
+                <div class="form-group {!! $errors->has('firstname') ? 'has-error' : '' !!}">
+                    <label for="firstname">Firstname</label>
                     <input type="text" class="form-control" name="firstname" placeholder="firstname">
+                    {!! $errors->first('firstname', '<small class="help-block">:message</small>') !!}
                 </div>
-                <div class="form-group">
-                    <label for="lastname">lastname</label>
+                <div class="form-group {!! $errors->has('lastname') ? 'has-error' : '' !!}">
+                    <label for="lastname">Lastname</label>
                     <input type="text" class="form-control" name="lastname" placeholder="lastname">
+                    {!! $errors->first('lastname', '<small class="help-block">:message</small>') !!}
+                </div>
+                <div class="form-group {!! $errors->has('email') ? 'has-error' : '' !!}">
+                    <label for="email">eMail</label>
+                    <input type="text" class="form-control" name="email" placeholder="eMail">
+                    {!! $errors->first('email', '<small class="help-block">:message</small>') !!}
                 </div>
                 <div class="form-group">
                     <label for="gender">Gender</label>
